@@ -19,7 +19,6 @@ int main()
     unsigned int arr[] = {7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                           17, 18, 19, 20, 21, 30, 23, 24, 25, 26};
     int ret = 1;
-    unsigned int arr_asc[20]; 
 
     // write_array(arr);
     printf("\n");
@@ -43,7 +42,7 @@ int main()
         scanf(" %c", &option);
 
         // When the user chooses Q/q, the function returns 0
-        ret = menu_option_assign(&page, option, arr, arr_asc);
+        ret = menu_option_assign(&page, option, arr);
 
         printf("\n");
         if (ret == 0)

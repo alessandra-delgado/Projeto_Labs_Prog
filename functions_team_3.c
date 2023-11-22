@@ -1,10 +1,12 @@
 #include "functions_team_3.h"
 #include <stdio.h>
+#include <stdlib.h>
+
 #include <math.h>
 #include <gmp.h>
 
 //ASSIGNING ================================================================================================
-int menu_option_assign(int *pg, char opt, unsigned int arr[], unsigned int arr_asc[])
+int menu_option_assign(int *pg, char opt, unsigned int arr[])
 {
     if (opt == 'Q' || opt == 'q') {
         printf("A terminar...");
@@ -23,9 +25,11 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[], unsigned int arr_a
 
             case '2':
                 printf("Vetor ordenado por ordem crescente:\n");
-                array_rearrange_asc(arr, arr_asc);
                 printf("Vetor reeordenado:\n");
-                array_display(arr_asc);
+                
+                unsigned int* arr_ord = array_rearrange_asc(arr);
+                array_display(arr_ord);
+                free(arr_ord);
                 break;
 
             case '3':
@@ -195,10 +199,11 @@ void array_multiply_elements(unsigned int n[])
     mpz_clear(resultado);
 }
 
-void array_rearrange_asc(unsigned int arr[], unsigned int arr_asc[])
+unsigned int* array_rearrange_asc(unsigned int arr[])
 {
-    // 1 - Copy from one array to another
+    unsigned int* arr_asc = (unsigned int*) calloc(20, sizeof(unsigned int)); 
 
+    // 1 - Copy from one array to another
     for(int i = 0; i < 20; i++)
     {
         arr_asc[i] = arr[i];
@@ -224,6 +229,7 @@ void array_rearrange_asc(unsigned int arr[], unsigned int arr_asc[])
     }
     while(count > 0);
 
+    return arr_asc;
 }
 
 void matrix_display(unsigned int matrix[20][20])

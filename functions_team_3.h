@@ -16,7 +16,7 @@ void menu_display(int page);
 void press_r_to_continue(char *opt);
 
 //Assigns user's input to corresponding menu option/functionality
-int menu_option_assign(int *pg, char opt, unsigned int arr[], unsigned int arr_asc[]);
+int menu_option_assign(int *pg, char opt, unsigned int arr[]);
 
 // FUNCTIONALITIES =====================================================================================
 
@@ -24,7 +24,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[], unsigned int arr_a
 //Multiplies every array element by one another
 void array_multiply_elements(unsigned int arr[]);
 
-void array_rearrange_asc(unsigned int arr[], unsigned int arr_asc[]);
+unsigned int* array_rearrange_asc(unsigned int arr[]);
 
 //Sums all elements and calculates result's sin
 float array_sin(unsigned int arr[]);
