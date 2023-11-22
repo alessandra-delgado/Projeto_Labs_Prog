@@ -19,19 +19,19 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
     {
         switch (opt)
         {
-            case '1':
-                printf("Cálculo da multiplicação de todos os elementos no vetor:\n");
-                array_mul(arr, 20);
-                break;
+        case '1':
+            printf("Cálculo da multiplicação de todos os elementos no vetor:\n");
+            array_mul(arr, 20);
+            break;
 
-            case '2':
-                printf("Vetor ordenado por ordem crescente:\n");
-                printf("Vetor reeordenado:\n");
-                
-                unsigned int* arr_ord = array_sort_asc(arr, 20);
-                array_display(arr_ord, 20);
-                free(arr_ord);
-                break;
+        case '2':
+            printf("Vetor ordenado por ordem crescente:\n");
+            printf("Vetor reeordenado:\n");
+
+            unsigned int *arr_ord = array_sort_asc(arr, 20);
+            array_display(arr_ord, 20);
+            free(arr_ord);
+            break;
 
         case '3':
             printf("Cálculo do seno de todos os elementos no vetor:\n");
@@ -155,10 +155,10 @@ void menu_display(int page)
     printf("[======================================================================  (PAG 0%d)  ]\n", page);
 }
 
-void array_write(unsigned int arr[])
+void array_read(unsigned int arr[], int sz)
 {
     // 1 - Read user's input for each element in the array
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
         do
         {
@@ -221,12 +221,12 @@ void swap(unsigned int arr[], int i)
     arr[i + 1] = temp;
 }
 
-unsigned int* array_sort_asc(unsigned int arr[], int sz)
+unsigned int *array_sort_asc(unsigned int arr[], int sz)
 {
-    unsigned int* arr_asc = (unsigned int*) calloc(sz, sizeof(unsigned int)); 
+    unsigned int *arr_asc = (unsigned int *)calloc(sz, sizeof(unsigned int));
 
     // 1 - Copy from one array to another
-    for(int i = 0; i < sz; i++)
+    for (int i = 0; i < sz; i++)
     {
         arr_asc[i] = arr[i];
     }
@@ -237,9 +237,9 @@ unsigned int* array_sort_asc(unsigned int arr[], int sz)
     // 3 - Swap values when needed
     do
     {
-        for (int i = 0; i < sz-1; i++)
+        for (int i = 0; i < sz - 1; i++)
         {
-            if(arr_asc[i] > arr_asc[i+1])
+            if (arr_asc[i] > arr_asc[i + 1])
             {
                 swap(arr_asc, i);
                 count++;
@@ -247,8 +247,7 @@ unsigned int* array_sort_asc(unsigned int arr[], int sz)
         }
 
         count--;
-    }
-    while(count > 0);
+    } while (count > 0);
 
     return arr_asc;
 }
@@ -271,7 +270,7 @@ void array_permute(unsigned int arr[], int sz)
         {
             // Pushes every element to the left, in comparison to the preceding line.
             // If it's the first element, pass it to the last cell
-            matrix[i][j] = j == (sz-1) ? matrix[i - 1][0] : matrix[i - 1][j + 1];
+            matrix[i][j] = j == (sz - 1) ? matrix[i - 1][0] : matrix[i - 1][j + 1];
         }
     }
 
@@ -293,7 +292,6 @@ void array_mod_5(unsigned int arr[], int sz)
 {
     printf("Pares (indice, elemento): ");
 
-
     for (int i = 0; i < sz; i++)
     {
         if (arr[i] > 2 && arr[i] % 5 == 0)
@@ -309,9 +307,11 @@ unsigned int array_min(unsigned int arr[], int sz)
 {
     unsigned int min = UINT_MAX;
 
-    for (int i = 0; i < sz; i++){
+    for (int i = 0; i < sz; i++)
+    {
         // Could be a ternary operator
-        if(arr[i] < min){
+        if (arr[i] < min)
+        {
             min = arr[i];
         }
     }
