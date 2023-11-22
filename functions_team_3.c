@@ -19,19 +19,19 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
     {
         switch (opt)
         {
-            case '1':
-                printf("Cálculo da multiplicação de todos os elementos no vetor:\n");
-                array_mul(arr, 20);
-                break;
+        case '1':
+            printf("Cálculo da multiplicação de todos os elementos no vetor:\n");
+            array_mul(arr, 20);
+            break;
 
-            case '2':
-                printf("Vetor ordenado por ordem crescente:\n");
-                printf("Vetor reeordenado:\n");
-                
-                unsigned int* arr_ord = array_sort_asc(arr, 20);
-                array_display(arr_ord);
-                free(arr_ord);
-                break;
+        case '2':
+            printf("Vetor ordenado por ordem crescente:\n");
+            printf("Vetor reeordenado:\n");
+
+            unsigned int *arr_ord = array_sort_asc(arr, 20);
+            array_display(arr_ord, 20);
+            free(arr_ord);
+            break;
 
         case '3':
             printf("Cálculo do seno de todos os elementos no vetor:\n");
@@ -40,7 +40,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
 
         case '4':
             printf("Construção de uma matriz 20 por 20:\n");
-            array_permute(arr);
+            array_permute(arr, 20);
             break;
 
         case '5':
@@ -101,17 +101,19 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
     return 1;
 }
 
-void press_r_to_continue(char *opt)
+void press_r_to_continue()
 {
+    char opt = ' ';
+
     do
     {
         printf("Pressione R para continuar: ");
-        scanf(" %c", &*opt);
-        if (*opt != 'r' && *opt != 'R')
+        scanf(" %c", &opt);
+        if (opt != 'r' && opt != 'R')
         {
-            printf("Inseriu: '%c'. Tente novamente.\n", *opt);
+            printf("Inseriu: '%c'. Tente novamente.\n", opt);
         }
-    } while (*opt != 'r' && *opt != 'R');
+    } while (opt != 'r' && opt != 'R');
 }
 
 void menu_display(int page)
@@ -156,10 +158,10 @@ void menu_display(int page)
     printf("[======================================================================  (PAG 0%d)  ]\n", page);
 }
 
-void array_write(unsigned int arr[])
+void array_read(unsigned int arr[], int sz)
 {
     // 1 - Read user's input for each element in the array
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
         do
         {
@@ -170,16 +172,28 @@ void array_write(unsigned int arr[])
     }
 }
 
-void array_display(unsigned int arr[])
+void array_display(unsigned int arr[], int sz)
 {
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
         printf("%d, ", arr[i]);
     }
 }
 
-// MENU FUNCTIONALITIES =====================================================================================
+void matrix_display(unsigned int matrix[20][20])
+{
+    for (int i = 0; i < 20; i++)
+    {
+        for (int j = 0; j < 20; j++)
+        {
+            printf("%d ", matrix[i][j]);
+        }
 
+        printf("\n");
+    }
+}
+
+// MENU FUNCTIONALITIES =====================================================================================
 void array_mul(unsigned int n[], int sz)
 {
     // 1 - Create variable
@@ -203,12 +217,19 @@ void array_mul(unsigned int n[], int sz)
     mpz_clear(resultado);
 }
 
-unsigned int* array_sort_asc(unsigned int arr[], int sz)
+void swap(unsigned int arr[], int i)
 {
-    unsigned int* arr_asc = (unsigned int*) calloc(sz, sizeof(unsigned int)); 
+    int temp = arr[i];
+    arr[i] = arr[i + 1];
+    arr[i + 1] = temp;
+}
+
+unsigned int *array_sort_asc(unsigned int arr[], int sz)
+{
+    unsigned int *arr_asc = (unsigned int *)calloc(sz, sizeof(unsigned int));
 
     // 1 - Copy from one array to another
-    for(int i = 0; i < sz; i++)
+    for (int i = 0; i < sz; i++)
     {
         arr_asc[i] = arr[i];
     }
@@ -219,9 +240,9 @@ unsigned int* array_sort_asc(unsigned int arr[], int sz)
     // 3 - Swap values when needed
     do
     {
-        for (int i = 0; i < sz-1; i++)
+        for (int i = 0; i < sz - 1; i++)
         {
-            if(arr_asc[i] > arr_asc[i+1])
+            if (arr_asc[i] > arr_asc[i + 1])
             {
                 swap(arr_asc, i);
                 count++;
@@ -229,56 +250,35 @@ unsigned int* array_sort_asc(unsigned int arr[], int sz)
         }
 
         count--;
-    }
-    while(count > 0);
+    } while (count > 0);
 
     return arr_asc;
 }
 
-void matrix_display(unsigned int matrix[20][20])
-{
-    for (int i = 0; i < 20; i++)
-    {
-        for (int j = 0; j < 20; j++)
-        {
-            printf("%d ", matrix[i][j]);
-        }
-
-        printf("\n");
-    }
-}
-
-void array_permute(unsigned int arr[])
+void array_permute(unsigned int arr[], int sz)
 {
     // 1 - Create matrix
-    unsigned int matrix[20][20];
+    unsigned int matrix[sz][sz];
 
     // 2 - Copy first line off array onto matrix's first line
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
         matrix[0][i] = arr[i];
     }
 
     // 3 - Create permutations and write onto matrix's different lines
-    for (int i = 1; i < 20; i++)
+    for (int i = 1; i < sz; i++)
     {
-        for (int j = 0; j < 20; j++)
+        for (int j = 0; j < sz; j++)
         {
             // Pushes every element to the left, in comparison to the preceding line.
             // If it's the first element, pass it to the last cell
-            matrix[i][j] = j == 19 ? matrix[i - 1][0] : matrix[i - 1][j + 1];
+            matrix[i][j] = j == (sz - 1) ? matrix[i - 1][0] : matrix[i - 1][j + 1];
         }
     }
 
     // 4 - Display resulted matrix
     matrix_display(matrix);
-}
-
-void swap(unsigned int arr[], int i)
-{
-    int temp = arr[i];
-    arr[i] = arr[i + 1];
-    arr[i + 1] = temp;
 }
 
 void array_sin(unsigned int arr[], int sz)
@@ -295,7 +295,6 @@ void array_mod_5(unsigned int arr[], int sz)
 {
     printf("Pares (indice, elemento): ");
 
-
     for (int i = 0; i < sz; i++)
     {
         if (arr[i] > 2 && arr[i] % 5 == 0)
@@ -311,9 +310,11 @@ unsigned int array_min(unsigned int arr[], int sz)
 {
     unsigned int min = UINT_MAX;
 
-    for (int i = 0; i < sz; i++){
+    for (int i = 0; i < sz; i++)
+    {
         // Could be a ternary operator
-        if(arr[i] < min){
+        if (arr[i] < min)
+        {
             min = arr[i];
         }
     }
