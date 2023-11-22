@@ -100,17 +100,17 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
     return 1;
 }
 
-void press_r_to_continue(char *opt)
+void press_r_to_continue(char opt)
 {
     do
     {
         printf("Pressione R para continuar: ");
-        scanf(" %c", &*opt);
-        if (*opt != 'r' && *opt != 'R')
+        scanf(" %c", &opt);
+        if (opt != 'r' && opt != 'R')
         {
-            printf("Inseriu: '%c'. Tente novamente.\n", *opt);
+            printf("Inseriu: '%c'. Tente novamente.\n", opt);
         }
-    } while (*opt != 'r' && *opt != 'R');
+    } while (opt != 'r' && opt != 'R');
 }
 
 void menu_display(int page)

@@ -4,11 +4,11 @@
 #include "functions_team_3.h"
 
 /**
- * @brief In this project, the program asks the user for 20 integers, of values ranging from 7 to 30, 
- * which are then stored in an array. The provided integers are then used for either calculating statistics 
+ * @brief In this project, the program asks the user for 20 integers, of values ranging from 7 to 30,
+ * which are then stored in an array. The provided integers are then used for either calculating statistics
  * or perform operations, at the user's request.
- * 
- * @return int 
+ *
+ * @return int
  */
 int main()
 {
@@ -21,12 +21,12 @@ int main()
     printf("\n");
     array_display(arr, 20);
 
-    press_r_to_continue(&option);
+    press_r_to_continue(option);
 
     while (1)
     {
         // 1 - Display menu to user
-        
+
         // has the same effect as typing "clear" in terminal
         system("clear");
         menu_display(page);
@@ -54,7 +54,7 @@ int main()
         // sopimpa
         if (option != 'X' && option != 'x' && option != 'P' && option != 'p')
         {
-            press_r_to_continue(&option);
+            press_r_to_continue(option);
         }
     }
 
