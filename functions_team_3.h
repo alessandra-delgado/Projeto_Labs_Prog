@@ -28,6 +28,12 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[]);
  */
 void array_mul(unsigned int arr[], int sz);
 
+/**
+ * @brief Returns the array arr sorted
+ * 
+ * @param arr Array
+ * @param sz Size fo array arr
+ */
 unsigned int* array_sort_asc(unsigned int arr[], int sz);
 
 /**
@@ -49,7 +55,6 @@ void matrix_display(unsigned int matrix[20][20]);
  * @param sz  Size of the given array
  */
 void array_mod_5(unsigned int arr[], int sz);
-
 
 /**
  * @brief Calculates the mininum value of a given array arr of size sz
