@@ -4,11 +4,14 @@
 //Depending on the page, displays either the menu or sub-menu
 void menu_display(int page);
 
-//The name is pretty self explanatory
-void press_r_to_continue(char opt);
-
 //Assigns user's input to corresponding menu option/functionality
 int menu_option_assign(int *pg, char opt, unsigned int arr[]);
+
+/**
+ * @brief Freezes the program until user inputs char R
+ * 
+ */
+void press_r_to_continue();
 
 /**
  * @brief Reads user input values to array

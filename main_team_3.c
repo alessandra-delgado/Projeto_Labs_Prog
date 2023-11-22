@@ -21,7 +21,7 @@ int main()
     printf("\n");
     array_display(arr, 20);
 
-    press_r_to_continue(option);
+    press_r_to_continue();
 
     while (1)
     {
@@ -54,7 +54,7 @@ int main()
         // sopimpa
         if (option != 'X' && option != 'x' && option != 'P' && option != 'p')
         {
-            press_r_to_continue(option);
+            press_r_to_continue();
         }
     }
 
