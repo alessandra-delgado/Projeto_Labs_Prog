@@ -29,7 +29,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
                 printf("Vetor reeordenado:\n");
                 
                 unsigned int* arr_ord = array_sort_asc(arr, 20);
-                array_display(arr_ord);
+                array_display(arr_ord, 20);
                 free(arr_ord);
                 break;
 
@@ -40,7 +40,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
 
         case '4':
             printf("Construção de uma matriz 20 por 20:\n");
-            array_permute(arr);
+            array_permute(arr, 20);
             break;
 
         case '5':
@@ -169,16 +169,28 @@ void array_write(unsigned int arr[])
     }
 }
 
-void array_display(unsigned int arr[])
+void array_display(unsigned int arr[], int sz)
 {
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
         printf("%d, ", arr[i]);
     }
 }
 
-// MENU FUNCTIONALITIES =====================================================================================
+void matrix_display(unsigned int matrix[20][20])
+{
+    for (int i = 0; i < 20; i++)
+    {
+        for (int j = 0; j < 20; j++)
+        {
+            printf("%d ", matrix[i][j]);
+        }
 
+        printf("\n");
+    }
+}
+
+// MENU FUNCTIONALITIES =====================================================================================
 void array_mul(unsigned int n[], int sz)
 {
     // 1 - Create variable
@@ -200,6 +212,13 @@ void array_mul(unsigned int n[], int sz)
 
     // 4 - Clear
     mpz_clear(resultado);
+}
+
+void swap(unsigned int arr[], int i)
+{
+    int temp = arr[i];
+    arr[i] = arr[i + 1];
+    arr[i + 1] = temp;
 }
 
 unsigned int* array_sort_asc(unsigned int arr[], int sz)
@@ -234,50 +253,30 @@ unsigned int* array_sort_asc(unsigned int arr[], int sz)
     return arr_asc;
 }
 
-void matrix_display(unsigned int matrix[20][20])
-{
-    for (int i = 0; i < 20; i++)
-    {
-        for (int j = 0; j < 20; j++)
-        {
-            printf("%d ", matrix[i][j]);
-        }
-
-        printf("\n");
-    }
-}
-
-void array_permute(unsigned int arr[])
+void array_permute(unsigned int arr[], int sz)
 {
     // 1 - Create matrix
-    unsigned int matrix[20][20];
+    unsigned int matrix[sz][sz];
 
     // 2 - Copy first line off array onto matrix's first line
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
         matrix[0][i] = arr[i];
     }
 
     // 3 - Create permutations and write onto matrix's different lines
-    for (int i = 1; i < 20; i++)
+    for (int i = 1; i < sz; i++)
     {
-        for (int j = 0; j < 20; j++)
+        for (int j = 0; j < sz; j++)
         {
             // Pushes every element to the left, in comparison to the preceding line.
             // If it's the first element, pass it to the last cell
-            matrix[i][j] = j == 19 ? matrix[i - 1][0] : matrix[i - 1][j + 1];
+            matrix[i][j] = j == (sz-1) ? matrix[i - 1][0] : matrix[i - 1][j + 1];
         }
     }
 
     // 4 - Display resulted matrix
     matrix_display(matrix);
-}
-
-void swap(unsigned int arr[], int i)
-{
-    int temp = arr[i];
-    arr[i] = arr[i + 1];
-    arr[i + 1] = temp;
 }
 
 void array_sin(unsigned int arr[], int sz)
