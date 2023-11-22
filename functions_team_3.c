@@ -35,7 +35,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
 
         case '3':
             printf("Cálculo do seno de todos os elementos no vetor:\n");
-            printf("Resultado: %.3f", array_sin(arr));
+            array_sin(arr, 20);
             break;
 
         case '4':
@@ -50,7 +50,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
 
         case '6':
             printf("Mínimo de todos os elementos do vetor\n");
-            printf("Mínimo:", array_min(arr, 20));
+            printf("Mínimo: %d", array_min(arr, 20));
             break;
 
         case '7':
@@ -247,36 +247,6 @@ void matrix_display(unsigned int matrix[20][20])
     }
 }
 
-void array_mod_5(unsigned int arr[], int sz)
-{
-    printf("Pares (indice, elemento): ");
-
-
-    for (int i = 0; i < sz; i++)
-    {
-        if (arr[i] > 2 && arr[i] % 5 == 0)
-        {
-            printf("(%d, %d), ", i, arr[i]);
-        }
-    }
-
-    printf("\n");
-}
-
-unsigned int array_min(unsigned int arr[], int sz)
-{
-    unsigned int min = UINT_MAX;
-
-    for (int i = 0; i < sz; i++){
-        // Could be a ternary operator
-        if(arr[i] < min){
-            min = arr[i];
-        }
-    }
-
-    return min;
-}
-
 void array_permute(unsigned int arr[])
 {
     // 1 - Create matrix
@@ -310,14 +280,42 @@ void swap(unsigned int arr[], int i)
     arr[i + 1] = temp;
 }
 
-float array_sin(unsigned int arr[])
+void array_sin(unsigned int arr[], int sz)
 {
-    unsigned int sum = 0;
-
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
-        sum += arr[i];
+        printf("%.3f, ", sin(arr[i]));
     }
 
-    return sin(sum);
+    printf("\n");
+}
+
+void array_mod_5(unsigned int arr[], int sz)
+{
+    printf("Pares (indice, elemento): ");
+
+
+    for (int i = 0; i < sz; i++)
+    {
+        if (arr[i] > 2 && arr[i] % 5 == 0)
+        {
+            printf("(%d, %d), ", i, arr[i]);
+        }
+    }
+
+    printf("\n");
+}
+
+unsigned int array_min(unsigned int arr[], int sz)
+{
+    unsigned int min = UINT_MAX;
+
+    for (int i = 0; i < sz; i++){
+        // Could be a ternary operator
+        if(arr[i] < min){
+            min = arr[i];
+        }
+    }
+
+    return min;
 }

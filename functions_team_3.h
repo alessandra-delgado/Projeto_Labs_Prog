@@ -27,7 +27,14 @@ void array_multiply_elements(unsigned int arr[]);
 unsigned int* array_rearrange_asc(unsigned int arr[]);
 
 //Sums all elements and calculates result's sin
-float array_sin(unsigned int arr[]);
+
+/**
+ * @brief Calculates the sin of the array arr elements
+ * 
+ * @param arr Array
+ * @param sz Size fo array arr
+ */
+void array_sin(unsigned int arr[], int sz);
 
 //Permutes every element to the left, in comparison to preceding line, and displays it
 void array_permute(unsigned int arr[]);
@@ -40,7 +47,6 @@ void matrix_display(unsigned int matrix[20][20]);
  * @param sz  Size of the given array
  */
 void array_mod_5(unsigned int arr[], int sz);
-
 
 
 /**
