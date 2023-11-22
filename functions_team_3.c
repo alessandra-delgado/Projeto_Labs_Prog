@@ -47,6 +47,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
 
         case '6':
             printf("Mínimo de todos os elementos do vetor\n");
+            array_min(arr, 20);
             break;
 
         case '7':
@@ -233,15 +234,32 @@ void matrix_display(unsigned int matrix[20][20])
 
 void array_mod_5(unsigned int arr[], int sz)
 {
+    printf("Pares (indice, elemento): ");
+
+
     for (int i = 0; i < sz; i++)
     {
         if (arr[i] > 2 && arr[i] % 5 == 0)
         {
-            printf("%d ", arr[i]);
+            printf("(%d, %d), ", i, arr[i]);
         }
     }
 
     printf("\n");
+}
+
+void array_min(unsigned int arr[], int sz)
+{
+    unsigned int min = UINT_MAX;
+
+    for (int i = 0; i < sz; i++){
+        // Could be a ternary operator
+        if(arr[i] < min){
+            min = arr[i];
+        }
+    }
+
+    printf("Minimo: %d", min);
 }
 
 void array_permute(unsigned int arr[])

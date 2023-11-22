@@ -42,6 +42,14 @@ void matrix_display(unsigned int matrix[20][20]);
  */
 void array_mod_5(unsigned int arr[], int sz);
 
+/**
+ * @brief Calculates the mininum value of a given array arr of size sz
+ * 
+ * @param arr Array 
+ * @param sz  Size of the given array
+ */
+void array_min(unsigned int arr[], int sz);
+
 //Extra functionalities =======================
 
 
