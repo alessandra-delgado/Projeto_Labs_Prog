@@ -21,21 +21,21 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
         {
             case '1':
                 printf("Cálculo da multiplicação de todos os elementos no vetor:\n");
-                array_multiply_elements(arr);
+                array_mul(arr, 20);
                 break;
 
             case '2':
                 printf("Vetor ordenado por ordem crescente:\n");
                 printf("Vetor reeordenado:\n");
                 
-                unsigned int* arr_ord = array_rearrange_asc(arr);
+                unsigned int* arr_ord = array_sort_asc(arr, 20);
                 array_display(arr_ord);
                 free(arr_ord);
                 break;
 
         case '3':
             printf("Cálculo do seno de todos os elementos no vetor:\n");
-            printf("Resultado: %.3f", array_sin(arr));
+            array_sin(arr, 20);
             break;
 
         case '4':
@@ -50,7 +50,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
 
         case '6':
             printf("Mínimo de todos os elementos do vetor\n");
-            printf("Mínimo:", array_min(arr, 20));
+            printf("Mínimo: %d", array_min(arr, 20));
             break;
 
         case '7':
@@ -179,7 +179,7 @@ void array_display(unsigned int arr[])
 
 // MENU FUNCTIONALITIES =====================================================================================
 
-void array_multiply_elements(unsigned int n[])
+void array_mul(unsigned int n[], int sz)
 {
     // 1 - Create variable
     mpz_t resultado;
@@ -188,13 +188,13 @@ void array_multiply_elements(unsigned int n[])
     mpz_set_ui(resultado, 1);
 
     // 2 - Calculate
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
         mpz_mul_ui(resultado, resultado, n[i]);
     }
 
     // 3 - Print
-    printf("resultado = ");
+    printf("Resultado = ");
     mpz_out_str(stdout, 10, resultado);
     printf("\n");
 
@@ -202,12 +202,12 @@ void array_multiply_elements(unsigned int n[])
     mpz_clear(resultado);
 }
 
-unsigned int* array_rearrange_asc(unsigned int arr[])
+unsigned int* array_sort_asc(unsigned int arr[], int sz)
 {
-    unsigned int* arr_asc = (unsigned int*) calloc(20, sizeof(unsigned int)); 
+    unsigned int* arr_asc = (unsigned int*) calloc(sz, sizeof(unsigned int)); 
 
     // 1 - Copy from one array to another
-    for(int i = 0; i < 20; i++)
+    for(int i = 0; i < sz; i++)
     {
         arr_asc[i] = arr[i];
     }
@@ -218,7 +218,7 @@ unsigned int* array_rearrange_asc(unsigned int arr[])
     // 3 - Swap values when needed
     do
     {
-        for (int i = 0; i < 19; i++)
+        for (int i = 0; i < sz-1; i++)
         {
             if(arr_asc[i] > arr_asc[i+1])
             {
@@ -245,36 +245,6 @@ void matrix_display(unsigned int matrix[20][20])
 
         printf("\n");
     }
-}
-
-void array_mod_5(unsigned int arr[], int sz)
-{
-    printf("Pares (indice, elemento): ");
-
-
-    for (int i = 0; i < sz; i++)
-    {
-        if (arr[i] > 2 && arr[i] % 5 == 0)
-        {
-            printf("(%d, %d), ", i, arr[i]);
-        }
-    }
-
-    printf("\n");
-}
-
-unsigned int array_min(unsigned int arr[], int sz)
-{
-    unsigned int min = UINT_MAX;
-
-    for (int i = 0; i < sz; i++){
-        // Could be a ternary operator
-        if(arr[i] < min){
-            min = arr[i];
-        }
-    }
-
-    return min;
 }
 
 void array_permute(unsigned int arr[])
@@ -310,14 +280,42 @@ void swap(unsigned int arr[], int i)
     arr[i + 1] = temp;
 }
 
-float array_sin(unsigned int arr[])
+void array_sin(unsigned int arr[], int sz)
 {
-    unsigned int sum = 0;
-
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
-        sum += arr[i];
+        printf("%.3f, ", sin(arr[i]));
     }
 
-    return sin(sum);
+    printf("\n");
+}
+
+void array_mod_5(unsigned int arr[], int sz)
+{
+    printf("Pares (indice, elemento): ");
+
+
+    for (int i = 0; i < sz; i++)
+    {
+        if (arr[i] > 2 && arr[i] % 5 == 0)
+        {
+            printf("(%d, %d), ", i, arr[i]);
+        }
+    }
+
+    printf("\n");
+}
+
+unsigned int array_min(unsigned int arr[], int sz)
+{
+    unsigned int min = UINT_MAX;
+
+    for (int i = 0; i < sz; i++){
+        // Could be a ternary operator
+        if(arr[i] < min){
+            min = arr[i];
+        }
+    }
+
+    return min;
 }

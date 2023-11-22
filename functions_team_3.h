@@ -20,14 +20,29 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[]);
 
 // FUNCTIONALITIES =====================================================================================
 
-//Main menu ===================================
-//Multiplies every array element by one another
-void array_multiply_elements(unsigned int arr[]);
+/**
+ * @brief Calculates the product of the array elements
+ * 
+ * @param arr Array
+ * @param sz Size fo array arr
+ */
+void array_mul(unsigned int arr[], int sz);
 
-unsigned int* array_rearrange_asc(unsigned int arr[]);
+/**
+ * @brief Returns the array arr sorted
+ * 
+ * @param arr Array
+ * @param sz Size fo array arr
+ */
+unsigned int* array_sort_asc(unsigned int arr[], int sz);
 
-//Sums all elements and calculates result's sin
-float array_sin(unsigned int arr[]);
+/**
+ * @brief Calculates the sin of the array arr elements
+ * 
+ * @param arr Array
+ * @param sz Size fo array arr
+ */
+void array_sin(unsigned int arr[], int sz);
 
 //Permutes every element to the left, in comparison to preceding line, and displays it
 void array_permute(unsigned int arr[]);
@@ -40,8 +55,6 @@ void matrix_display(unsigned int matrix[20][20]);
  * @param sz  Size of the given array
  */
 void array_mod_5(unsigned int arr[], int sz);
-
-
 
 /**
  * @brief Calculates the mininum value of a given array arr of size sz
