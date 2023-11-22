@@ -30,21 +30,20 @@ void matrix_display(unsigned int matrix[20][20]);
 // FUNCTIONALITIES =====================================================================================
 
 /**
- * @brief Swaps two consecutive elemts of an array
- * 
- * @param arr 
- * @param i base index
- */
-void swap(unsigned int arr[], int i);
-
-
-/**
  * @brief Calculates the product of the array elements
  * 
  * @param arr Array
  * @param sz Size fo array arr
  */
 void array_mul(unsigned int arr[], int sz);
+
+/**
+ * @brief Swaps two consecutive elemts of an array
+ * 
+ * @param arr 
+ * @param i base index
+ */
+void swap(unsigned int arr[], int i);
 
 /**
  * @brief Returns the array arr sorted

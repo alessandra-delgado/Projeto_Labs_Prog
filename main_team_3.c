@@ -19,7 +19,7 @@ int main()
     int ret = 1;
 
     printf("\n");
-    array_display(arr);
+    array_display(arr, 20);
 
     press_r_to_continue(&option);
 
