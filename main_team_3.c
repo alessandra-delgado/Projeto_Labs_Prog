@@ -25,17 +25,20 @@ int main()
 
     while (1)
     {
+        // 1 - Display menu to user
+        
         // has the same effect as typing "clear" in terminal
         system("clear");
         menu_display(page);
         printf("\n");
 
+        // 2 - Get Input from user
+        printf("Insira uma opção: ");
+
         /*An empty space character is left on scanf's
          * reading as we don't want the program
          * to pick on unwanted newlines!
          */
-        printf("Insira uma opção: ");
-
         scanf(" %c", &option);
 
         // When the user chooses Q/q, the function returns 0
