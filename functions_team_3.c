@@ -21,14 +21,14 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
         {
             case '1':
                 printf("Cálculo da multiplicação de todos os elementos no vetor:\n");
-                array_multiply_elements(arr);
+                array_mul(arr, 20);
                 break;
 
             case '2':
                 printf("Vetor ordenado por ordem crescente:\n");
                 printf("Vetor reeordenado:\n");
                 
-                unsigned int* arr_ord = array_rearrange_asc(arr);
+                unsigned int* arr_ord = array_sort_asc(arr, 20);
                 array_display(arr_ord);
                 free(arr_ord);
                 break;
@@ -179,7 +179,7 @@ void array_display(unsigned int arr[])
 
 // MENU FUNCTIONALITIES =====================================================================================
 
-void array_multiply_elements(unsigned int n[])
+void array_mul(unsigned int n[], int sz)
 {
     // 1 - Create variable
     mpz_t resultado;
@@ -188,13 +188,13 @@ void array_multiply_elements(unsigned int n[])
     mpz_set_ui(resultado, 1);
 
     // 2 - Calculate
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sz; i++)
     {
         mpz_mul_ui(resultado, resultado, n[i]);
     }
 
     // 3 - Print
-    printf("resultado = ");
+    printf("Resultado = ");
     mpz_out_str(stdout, 10, resultado);
     printf("\n");
 
@@ -202,12 +202,12 @@ void array_multiply_elements(unsigned int n[])
     mpz_clear(resultado);
 }
 
-unsigned int* array_rearrange_asc(unsigned int arr[])
+unsigned int* array_sort_asc(unsigned int arr[], int sz)
 {
-    unsigned int* arr_asc = (unsigned int*) calloc(20, sizeof(unsigned int)); 
+    unsigned int* arr_asc = (unsigned int*) calloc(sz, sizeof(unsigned int)); 
 
     // 1 - Copy from one array to another
-    for(int i = 0; i < 20; i++)
+    for(int i = 0; i < sz; i++)
     {
         arr_asc[i] = arr[i];
     }
@@ -218,7 +218,7 @@ unsigned int* array_rearrange_asc(unsigned int arr[])
     // 3 - Swap values when needed
     do
     {
-        for (int i = 0; i < 19; i++)
+        for (int i = 0; i < sz-1; i++)
         {
             if(arr_asc[i] > arr_asc[i+1])
             {

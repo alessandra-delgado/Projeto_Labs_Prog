@@ -20,13 +20,15 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[]);
 
 // FUNCTIONALITIES =====================================================================================
 
-//Main menu ===================================
-//Multiplies every array element by one another
-void array_multiply_elements(unsigned int arr[]);
+/**
+ * @brief Calculates the product of the array elements
+ * 
+ * @param arr Array
+ * @param sz Size fo array arr
+ */
+void array_mul(unsigned int arr[], int sz);
 
-unsigned int* array_rearrange_asc(unsigned int arr[]);
-
-//Sums all elements and calculates result's sin
+unsigned int* array_sort_asc(unsigned int arr[], int sz);
 
 /**
  * @brief Calculates the sin of the array arr elements
