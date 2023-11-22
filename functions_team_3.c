@@ -1,5 +1,7 @@
 #include "functions_team_3.h"
 #include <stdio.h>
+#include <stdlib.h>
+
 #include <math.h>
 #include <gmp.h>
 
@@ -17,18 +19,19 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
     {
         switch (opt)
         {
+            case '1':
+                printf("Cálculo da multiplicação de todos os elementos no vetor:\n");
+                array_multiply_elements(arr);
+                break;
 
-        case '1':
-            printf("Cálculo da multiplicação de todos os elementos no vetor:\n");
-            array_multiply_elements(arr);
-            break;
-
-        case '2':
-            printf("Vetor ordenado por ordem crescente:\n");
-            array_rearrange_asc(arr);
-            printf("Vetor reeordenado:\n");
-            array_display(arr);
-            break;
+            case '2':
+                printf("Vetor ordenado por ordem crescente:\n");
+                printf("Vetor reeordenado:\n");
+                
+                unsigned int* arr_ord = array_rearrange_asc(arr);
+                array_display(arr_ord);
+                free(arr_ord);
+                break;
 
         case '3':
             printf("Cálculo do seno de todos os elementos no vetor:\n");
@@ -199,24 +202,36 @@ void array_multiply_elements(unsigned int n[])
     mpz_clear(resultado);
 }
 
-void array_rearrange_asc(unsigned int arr[])
+unsigned int* array_rearrange_asc(unsigned int arr[])
 {
-    // 1 - Create temporary variables
+    unsigned int* arr_asc = (unsigned int*) calloc(20, sizeof(unsigned int)); 
+
+    // 1 - Copy from one array to another
+    for(int i = 0; i < 20; i++)
+    {
+        arr_asc[i] = arr[i];
+    }
+
+    // 2 - Create temporary variables
     int count = 0;
 
-    // 2 - Swap values when needed
+    // 3 - Swap values when needed
     do
     {
         for (int i = 0; i < 19; i++)
         {
-            if (arr[i] > arr[i + 1])
+            if(arr_asc[i] > arr_asc[i+1])
             {
-                swap(arr, i);
+                swap(arr_asc, i);
                 count++;
             }
         }
+
         count--;
-    } while (count > 0);
+    }
+    while(count > 0);
+
+    return arr_asc;
 }
 
 void matrix_display(unsigned int matrix[20][20])
