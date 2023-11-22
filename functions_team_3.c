@@ -4,7 +4,7 @@
 #include <gmp.h>
 
 //ASSIGNING ================================================================================================
-int menu_option_assign(int *pg, char opt, unsigned int arr[])
+int menu_option_assign(int *pg, char opt, unsigned int arr[], unsigned int arr_asc[])
 {
     if (opt == 'Q' || opt == 'q') {
         printf("A terminar...");
@@ -16,7 +16,6 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
     {
         switch (opt)
         {
-
             case '1':
                 printf("Cálculo da multiplicação de todos os elementos no vetor:\n");
                 array_multiply_elements(arr);
@@ -24,9 +23,9 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
 
             case '2':
                 printf("Vetor ordenado por ordem crescente:\n");
-                array_rearrange_asc(arr);
+                array_rearrange_asc(arr, arr_asc);
                 printf("Vetor reeordenado:\n");
-                array_display(arr);
+                array_display(arr_asc);
                 break;
 
             case '3':
@@ -196,23 +195,31 @@ void array_multiply_elements(unsigned int n[])
     mpz_clear(resultado);
 }
 
-void array_rearrange_asc(unsigned int arr[])
+void array_rearrange_asc(unsigned int arr[], unsigned int arr_asc[])
 {
-    // 1 - Create temporary variables
+    // 1 - Copy from one array to another
+
+    for(int i = 0; i < 20; i++)
+    {
+        arr_asc[i] = arr[i];
+    }
+
+    // 2 - Create temporary variables
     int count = 0;
 
-    // 2 - Swap values when needed
+    // 3 - Swap values when needed
     do
     {
         for(int i = 0; i < 19; i++)
         {
-            if(arr[i] > arr[i+1])
+            if(arr_asc[i] > arr_asc[i+1])
             {
-                swap(arr, i);
+                swap(arr_asc, i);
                 count++;
             }
             
         }
+
         count--;
     }
     while(count > 0);
