@@ -54,7 +54,8 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
             break;
 
         case '7':
-            printf("AJUDA:\n");
+            system("clear");
+            help_display();
             break;
 
         case 'x':
@@ -318,4 +319,28 @@ unsigned int array_min(unsigned int arr[], int sz)
     }
 
     return min;
+}
+
+void help_display()
+{
+    printf("[====================================== AJUDA =====================================]\n"
+           "|                                                                                  |\n"
+           "|  Após a leitura dos valores, passados para o vetor, é mostrado o menu principal, |\n"
+           "|  no qual o utilizador pode realizar uma escolha de operações a serem feitas so-  |\n"
+           "|  bre esse mesmo vetor.                                                           |\n"
+           "|  Na página inicial (1) estão apresentadas as funcionalidades principais (bási-   |\n"
+           "|  cas).                                                                           |\n"
+           "|  A página de funcionalidades extras (2), ou o sub-menu, pode ser acessad@ pelo   |\n"
+           "|  utilizador ao premir 'X', ou 'x' (para retornar à página inicial, o utilizador  |\n"
+           "|  deve premir 'P', ou 'p').                                                       |\n"
+           "|  Tanto no menu principal, como no sub-menu, o utilizador pode terminar o pro-    |\n"
+           "|  grama ao premir 'Q', ou 'q'.                                                    |\n"
+           "|                                                                                  |\n"
+           "[==================================================================================]\n");
+
+
+
+
+
+
 }
