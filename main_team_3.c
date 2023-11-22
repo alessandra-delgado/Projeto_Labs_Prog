@@ -3,24 +3,21 @@
 
 #include "functions_team_3.h"
 
+/**
+ * @brief In this project, the program asks the user for 20 integers, of values ranging from 7 to 30, 
+ * which are then stored in an array. The provided integers are then used for either calculating statistics 
+ * or perform operations, at the user's request.
+ * 
+ * @return int 
+ */
 int main()
 {
-    /* ==========================================================================
-     * In this project, the program asks the user for 20 integers,
-     * of values ranging from 7 to 30, which are then stored in an array.
-     * The provided integers are then used for either calculating statistics
-     * or perform operations, at the user's request.
-     * ==========================================================================
-     */
-
-    //* Variables ===============================================================
     int page = 1;
     char option;
     unsigned int arr[] = {7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-                          17, 18, 19, 20, 21, 22, 23, 24, 25, 26};
+                          17, 18, 19, 20, 21, 30, 23, 24, 25, 26};
     int ret = 1;
 
-    // write_array(arr);
     printf("\n");
     array_display(arr);
 
@@ -28,17 +25,20 @@ int main()
 
     while (1)
     {
+        // 1 - Display menu to user
+        
         // has the same effect as typing "clear" in terminal
         system("clear");
         menu_display(page);
         printf("\n");
 
+        // 2 - Get Input from user
+        printf("Insira uma opção: ");
+
         /*An empty space character is left on scanf's
          * reading as we don't want the program
          * to pick on unwanted newlines!
          */
-        printf("Insira uma opção: ");
-
         scanf(" %c", &option);
 
         // When the user chooses Q/q, the function returns 0
@@ -57,4 +57,6 @@ int main()
             press_r_to_continue(&option);
         }
     }
+
+    return 1;
 }
