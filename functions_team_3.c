@@ -47,7 +47,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
 
         case '6':
             printf("Mínimo de todos os elementos do vetor\n");
-            array_min(arr, 20);
+            printf("Mínimo:", array_min(arr, 20));
             break;
 
         case '7':
@@ -248,7 +248,7 @@ void array_mod_5(unsigned int arr[], int sz)
     printf("\n");
 }
 
-void array_min(unsigned int arr[], int sz)
+unsigned int array_min(unsigned int arr[], int sz)
 {
     unsigned int min = UINT_MAX;
 
@@ -259,7 +259,7 @@ void array_min(unsigned int arr[], int sz)
         }
     }
 
-    printf("Minimo: %d", min);
+    return min;
 }
 
 void array_permute(unsigned int arr[])
