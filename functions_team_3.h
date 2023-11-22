@@ -34,6 +34,14 @@ float array_sin(unsigned int arr[]);
 void array_permute(unsigned int arr[]);
 void matrix_display(unsigned int matrix[20][20]);
 
+/**
+ * @brief Displays elements bigger than 2 and divisible by 5 of array arr of size sz
+ * 
+ * @param arr Array 
+ * @param sz  Size of the given array
+ */
+void array_mod_5(unsigned int arr[], int sz);
+
 //Extra functionalities =======================
 
 
