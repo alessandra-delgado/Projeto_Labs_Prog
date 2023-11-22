@@ -65,7 +65,10 @@ void array_mod_5(unsigned int arr[], int sz);
  */
 unsigned int array_min(unsigned int arr[], int sz);
 
-
+/**
+ * @brief Displays the help screen
+ * 
+ */
 void help_display();
 
 //Extra functionalities =======================
