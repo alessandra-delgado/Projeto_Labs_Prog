@@ -1,10 +1,21 @@
 #ifndef _FUNCTIONS_TEAM_3_H_
 #define _FUNCTIONS_TEAM_3_H_
 
-//Depending on the page, displays either the menu or sub-menu
+/**
+ * @brief Depending on the page, displays either the menu or sub-menu
+ * 
+ * @param page
+ */
 void menu_display(int page);
 
-//Assigns user's input to corresponding menu option/functionality
+/**
+ * @brief Assigns user's input to corresponding menu option/functionality
+ * 
+ * @param pg Page
+ * @param opt Option
+ * @param arr Array
+ * @return Returns 0 when the user inputs 'Q' or 'q'
+ */
 int menu_option_assign(int *pg, char opt, unsigned int arr[]);
 
 /**
