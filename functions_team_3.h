@@ -139,6 +139,7 @@ void array_half_write(unsigned int arr[], unsigned int arr_half[], int sz);
  */
 void array_lcm(unsigned int arr[], int sz);
 
-
+int algo_gcd(int a, int b);
+int algo_lcm(int a, int b);
 
 #endif //_FUNCTIONS_TEAM_3_H_

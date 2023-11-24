@@ -79,7 +79,9 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
             break;
 
         case '2':
-            printf("Cálculo do mínimo múltiplo comum de cada dois números seguidos do vetor:");
+            printf("Cálculo do mínimo múltiplo comum de cada dois números seguidos do vetor.\n");
+            array_lcm(arr, 20);
+
             break;
 
         case '3':
@@ -369,10 +371,31 @@ void array_half_write(unsigned int arr[], unsigned int arr_half[], int sz)
 
 void array_lcm(unsigned int arr[], int sz)
 {
-    for(int i = 0; i < sz; i++)
+    int lcm = 0;
+
+    for(int i = 0; i < sz-1; i++)
     {
-        
+        printf("Mínimo múltiplo comum dos elementos %d e %d: %d\n", arr[i], arr[i+1], algo_lcm(arr[i], arr[i+1]));
     }
+
+}
+
+int algo_gcd(int a, int b)
+{
+    int tmp = b;
+
+    while (b != 0)
+    {
+        tmp = b;
+        b = a % b;
+        a = tmp;
+    }
+    return a;
+}
+
+int algo_lcm(int a, int b)
+{
+    return (a * b) / algo_gcd(a, b);
 }
 
 
