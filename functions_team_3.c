@@ -367,6 +367,15 @@ void array_half_write(unsigned int arr[], unsigned int arr_half[], int sz)
     }
 }
 
+void array_lcm(unsigned int arr[], int sz)
+{
+    for(int i = 0; i < sz; i++)
+    {
+        
+    }
+}
+
+
 
 
 

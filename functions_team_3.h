@@ -118,7 +118,7 @@ void help_display();
  * 
  * @param arr Array
  * @param sz Size of array arr
- * @return unsigned int pointer
+ * @return unsigned int pointer for the new array, arr_half
  */
 unsigned int* array_half_create(unsigned int arr[], int sz);
 
@@ -131,6 +131,13 @@ unsigned int* array_half_create(unsigned int arr[], int sz);
  */
 void array_half_write(unsigned int arr[], unsigned int arr_half[], int sz);
 
+/**
+ * @brief Calculates least common multiple of every each two array's numbers in a row.
+ * 
+ * @param arr Array
+ * @param sz Size of array arr
+ */
+void array_lcm(unsigned int arr[], int sz);
 
 
 
