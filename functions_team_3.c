@@ -1,11 +1,10 @@
 #include "functions_team_3.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 #include <math.h>
 #include <gmp.h>
 
-// ASSIGNING ================================================================================================
+// ASSIGNING ====================================================================================================================
 int menu_option_assign(int *pg, char opt, unsigned int arr[])
 {
     if (opt == 'Q' || opt == 'q')
@@ -74,6 +73,9 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
         {
         case '1':
             printf("Leitura de um novo vetor:");
+            unsigned int *arr_half = array_half_create(arr, 20);
+            array_display(arr_half, 20);
+            free(arr_half);
             break;
 
         case '2':
@@ -193,7 +195,7 @@ void matrix_display(unsigned int matrix[20][20])
     }
 }
 
-// MENU FUNCTIONALITIES =====================================================================================
+// MAIN MENU FUNCTIONALITIES ====================================================================================================
 void array_mul(unsigned int n[], int sz)
 {
     // 1 - Create variable
@@ -345,3 +347,29 @@ void help_display()
 
 
 }
+
+//EXTRA FUNCTIONALITIES =========================================================================================================
+unsigned int* array_half_create(unsigned int arr[], int sz)
+{
+    unsigned int *arr_half = (unsigned int *)calloc(sz, sizeof(unsigned int));
+
+    array_read(arr_half, sz);
+    array_half_write(arr, arr_half, sz);
+
+    return arr_half;
+}
+
+void array_half_write(unsigned int arr[], unsigned int arr_half[], int sz)
+{
+    for(int i = 0; i < sz/2; i++)
+    {
+        arr_half[i] = arr[i];
+    }
+}
+
+
+
+
+
+
+

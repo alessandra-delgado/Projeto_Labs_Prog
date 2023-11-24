@@ -46,7 +46,7 @@ void array_display(unsigned int arr[], int sz);
  */
 void matrix_display(unsigned int matrix[20][20]);
 
-// FUNCTIONALITIES =====================================================================================
+// FUNCTIONALITIES ==============================================================================================================
 
 /**
  * @brief Calculates the product of the array elements
@@ -111,6 +111,27 @@ unsigned int array_min(unsigned int arr[], int sz);
  */
 void help_display();
 
-//Extra functionalities =======================
+//Extra functionalities =========================================================================================================
+
+/**
+ * @brief Creates a new array (arr_half) and reads user input to write on it. Calls auxiliar array_half_write function.
+ * 
+ * @param arr Array
+ * @param sz Size of array arr
+ * @return unsigned int pointer
+ */
+unsigned int* array_half_create(unsigned int arr[], int sz);
+
+/**
+ * @brief Auxiliar array for array_half_create function. Writes half of the arr array onto the new array, arr_half.
+ * 
+ * @param arr Array
+ * @param arr_half Second array
+ * @param sz Size of both arrays arr and arr_half
+ */
+void array_half_write(unsigned int arr[], unsigned int arr_half[], int sz);
+
+
+
 
 #endif //_FUNCTIONS_TEAM_3_H_
