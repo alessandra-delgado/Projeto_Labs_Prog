@@ -39,12 +39,14 @@ void array_read(unsigned int arr[], int sz);
  */
 void array_display(unsigned int arr[], int sz);
 
+
 /**
  * @brief Displays 20*20 matrix
  * 
  * @param matrix Matrix
+ * @param sz size
  */
-void matrix_display(unsigned int matrix[20][20]);
+void matrix_display(unsigned int** matrix, int sz);
 
 // FUNCTIONALITIES ==============================================================================================================
 
@@ -80,13 +82,15 @@ unsigned int* array_sort_asc(unsigned int arr[], int sz);
  */
 void array_sin(unsigned int arr[], int sz);
 
+
 /**
  * @brief Permutes a given array, moving every element to the left per line
  * 
  * @param arr Array
  * @param sz Size of array arr
+ * @return unsigned** Resultant matrix
  */
-void array_permute(unsigned int arr[], int sz);
+unsigned int** array_permute(unsigned int arr[], int sz);
 
 /**
  * @brief Displays elements bigger than 2 and divisible by 5 of array arr of size sz
@@ -141,5 +145,17 @@ void array_lcm(unsigned int arr[], int sz);
 
 int algo_gcd(int a, int b);
 int algo_lcm(int a, int b);
+
+/**
+ * @brief Calculates the matrix product of two different arrays.
+ * 
+ * @param arr Array
+ * @param arr_asc Second array to multiply for
+ * @param sz Size of array arr
+ */
+unsigned int** array_matrix_prod(unsigned int arr[], unsigned int arr_asc[], int sz);
+
+void matrix_transposed(unsigned int** matrix, int sz);
+
 
 #endif //_FUNCTIONS_TEAM_3_H_

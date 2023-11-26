@@ -20,7 +20,8 @@ int main()
 
     printf("\n");
     array_display(arr, 20);
-
+    
+    printf("\n");
     press_r_to_continue();
 
     while (1)
@@ -41,10 +42,11 @@ int main()
          */
         scanf(" %c", &option);
 
-        // When the user chooses Q/q, the function returns 0
+        // When the user chooses the quitting option, the function returns 0
         ret = menu_option_assign(&page, option, arr);
-
         printf("\n");
+        
+        //When the function returns 0, the program ceases.
         if (ret == 0)
         {
             printf("Adeus!\n");
