@@ -186,7 +186,7 @@ void array_display(unsigned int arr[], int sz)
 
 void matrix_display(unsigned int matrix[20][20])
 {
-    for (int i = 0; i < 20; i++)
+    for(int i = 0; i < 20; i++)
     {
         for (int j = 0; j < 20; j++)
         {
@@ -342,11 +342,6 @@ void help_display()
            "|  grama ao premir 'Q', ou 'q'.                                                    |\n"
            "|                                                                                  |\n"
            "[==================================================================================]\n");
-
-
-
-
-
 
 }
 
