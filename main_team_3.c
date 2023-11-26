@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "functions_team_3.h"
 
@@ -7,11 +8,27 @@
  * @brief In this project, the program asks the user for 20 integers, of values ranging from 7 to 30,
  * which are then stored in an array. The provided integers are then used for either calculating statistics
  * or perform operations, at the user's request.
- *
- * @return int
+ * 
+ * @param argc Argument count
+ * @param argv Argument vector
+ * @return int 
  */
-int main()
+int main(int argc, char* argv[])
 {
+    if(argc >= 2)
+    {
+        if( strcmp(argv[1], "--help") == 0)
+        {
+            printf("Help\n");
+            return 0;
+        }
+        else
+        {
+            printf("Comando desconhecido. Tente '--help'\n");
+            return 0;
+        }
+    }
+    
     int page = 1;
     char option;
     unsigned int arr[] = {7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
