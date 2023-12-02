@@ -1,19 +1,41 @@
-# a seguinte linha define a variável compiler como tendo a string cc
-compiler = gcc
-SOURCEFILES = $(wildcard *.c) 
-LIB=-lgmp -lm
+CC = gcc
+TARGET_EXEC ?= execute.exe
+CONFIG_NAME ?= doxyfile
 
-.PHONY	:	all clean
+BUILD_DIR ?= ./build
+SRC_DIRS ?= ./src
+DOCS_DIR = ./docs
+LIBS = -lgmp -lm
 
-all	:	main.exe
+SRCS := $(shell find $(SRC_DIRS) -name *.c)
+OBJS := $(SRCS:%.c=$(BUILD_DIR)/%.o)
+DEPS := $(OBJS:.o=.d)
 
-main.exe	:	main_team_3.o functions_team_3.o
-	$(compiler) -o $@ main_team_3.o functions_team_3.o $(LIB)
-    
-%.o	:	%.c
-	$(compiler) -c $<
 
-# o phony target seguinte limpa todos os ficheiros auxiliares (*.o)
-clean :
-	rm *.o
-	@echo "Ficheiros removidos."
+#compile, with object files as dependencies
+$(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
+	$(CC) $(OBJS) -o $@ $(LIBS)
+
+
+#make build directory, if it doesn't exist; create object files
+$(BUILD_DIR)/%.o: %.c
+	$(MKDIR_P) $(dir $@)
+	$(CC) -c $< -o $@
+
+
+
+.PHONY: clean
+
+execute: $(BUILD_DIR)/$(TARGET_EXEC)
+	$(BUILD_DIR)/$(TARGET_EXEC) $(ARGS)
+
+docs: $(BUILD_DIR)/$(TARGET_EXEC)
+	@echo Building Docs
+	@doxygen
+
+clean:
+	$(RM) -r $(BUILD_DIR)
+
+-include $(DEPS)
+
+MKDIR_P ?= mkdir -p

@@ -1,5 +1,17 @@
+/**
+ * @file functions_team_3.h
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2023-12-02
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #ifndef _FUNCTIONS_TEAM_3_H_
 #define _FUNCTIONS_TEAM_3_H_
+
 
 /**
  * @brief Depending on the page, displays either the menu or sub-menu
