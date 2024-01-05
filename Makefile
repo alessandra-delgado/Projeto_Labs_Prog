@@ -1,13 +1,13 @@
 .PHONY: all run clean
 
 CC = gcc
-EXE ?= execute.exe
+EXE_NAME ?= execute.exe
 #CONFIG_NAME ?= doxyfile
 
 BUILD_DIR ?= ./build
 SRC_DIRS ?= src
 DOCS_DIR = ./docs
-EXE_DIR ?= $(BUILD_DIR)/$(EXE)
+EXE ?= $(BUILD_DIR)/$(EXE_NAME)
 
 MKDIR_P ?= mkdir -p
 LIBS = -lgmp -lm
@@ -17,12 +17,12 @@ OBJS := $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
 all: run
 
-run: $(EXE_DIR)
+run: $(EXE)
 	$< $(ARGS)
 
-# =============================
+# COMPILE =====================
 
-$(EXE_DIR): $(OBJS)
+$(EXE): $(OBJS)
 	$(CC) $^ -o $@ $(LIBS)
 
 $(BUILD_DIR)/%.o : %.c
