@@ -1,32 +1,31 @@
 .PHONY: all run clean
 
 CC = gcc
-EXE_NAME ?= execute.exe
-#CONFIG_NAME ?= doxyfile
+EXE ?= execute.exe
 
 BUILD_DIR ?= ./build
-SRC_DIRS ?= src
+SRC_DIR ?= src
 DOCS_DIR = ./docs
-EXE ?= $(BUILD_DIR)/$(EXE_NAME)
+EXE_DIR ?= $(BUILD_DIR)/$(EXE)
 
-MKDIR_P ?= mkdir -p
+MKDIR_F ?= -p
 LIBS = -lgmp -lm
 
-SRCS := $(shell find $(SRC_DIRS) -name *.c)
+SRCS := $(shell find $(SRC_DIR) -name *.c)
 OBJS := $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
 all: run
 
-run: $(EXE)
-	$< $(ARGS)
+run: $(EXE_DIR)
+	./$< $(ARGS)
 
 # COMPILE =====================
 
-$(EXE): $(OBJS)
+$(EXE_DIR): $(OBJS)
 	$(CC) $^ -o $@ $(LIBS)
 
 $(BUILD_DIR)/%.o : %.c
-	$(MKDIR_P) $(dir $@)
+	mkdir $(MKDIR_F) $(dir $@)
 	$(CC) -c $< -o $@
 	
 # =============================
