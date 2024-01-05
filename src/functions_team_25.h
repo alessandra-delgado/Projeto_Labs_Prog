@@ -130,22 +130,34 @@ void help_display();
 //Extra functionalities =========================================================================================================
 
 /**
- * @brief Creates a new array (arr_half) and reads user input to write on it. Calls auxiliar array_half_write function.
+ * @brief Reads a new array, and merges it with a given array, attending a zip algorithm. 
  * 
  * @param arr Array
  * @param sz Size of array arr
- * @return unsigned int pointer for the new array, arr_half
+ * @return unsigned int pointer for the new array, arr_2
  */
-unsigned int* array_half_create(unsigned int arr[], int sz);
+unsigned int* array_merge(unsigned int arr[], int sz);
+
+/*exemplo
+ * This function returns the division of two floats passed as parameters.
+ * @param x and @param y are floats, the dividend and the divisor, respectively.
+ *
+ * @return The value of x divided by y if y is different from 0. 
+ * @return 0 if y is equal to 0.
+ *
+ * Notice that the function checks if y is different from 0 before
+ * performing the division.
+*/
+
 
 /**
- * @brief Auxiliar array for array_half_create function. Writes half of the arr array onto the new array, arr_half.
+ * @brief Zip algorithm for two given arrays.
  * 
- * @param arr Array
- * @param arr_half Second array
- * @param sz Size of both arrays arr and arr_half
+ * @param arr_1 and @param arr_2 are unsigned int* arrays.
+ * @param sz is the size of the resulting array.
+ * @return The pointer of type unsigned int* for the resulting array.
  */
-void array_half_write(unsigned int arr[], unsigned int arr_half[], int sz);
+unsigned int* array_zip(unsigned int arr_1[], unsigned int arr_2[], int sz);
 
 /**
  * @brief Calculates least common multiple of every each two array's numbers in a row.

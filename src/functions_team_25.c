@@ -10,7 +10,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
     unsigned int *arr_asc = NULL;
     unsigned int **matrix = NULL;
     unsigned int *arr_ord = NULL;
-    unsigned int *arr_half = NULL;
+    unsigned int *arr_zip = NULL;
 
     if (opt == 'Q' || opt == 'q')
     {
@@ -84,9 +84,9 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
         {
         case '1':
             printf("Leitura de um novo vetor:");
-            arr_half = array_half_create(arr, 20);
-            array_display(arr_half, 20);
-            free(arr_half);
+            arr_zip = array_merge(arr, 20);
+            array_display(arr_zip, 20);
+            free(arr_zip);
 
             break;
 
@@ -232,24 +232,24 @@ void matrix_display(unsigned int **matrix, int sz)
 void array_mul(unsigned int n[], int sz)
 {
     // 1 - Create variable
-    mpz_t resultado;
-    mpz_init(resultado);
+    mpz_t result;
+    mpz_init(result);
 
-    mpz_set_ui(resultado, 1);
+    mpz_set_ui(result, 1);
 
     // 2 - Calculate
     for (int i = 0; i < sz; i++)
     {
-        mpz_mul_ui(resultado, resultado, n[i]);
+        mpz_mul_ui(result, result, n[i]);
     }
 
     // 3 - Print
     printf("Resultado = ");
-    mpz_out_str(stdout, 10, resultado);
+    mpz_out_str(stdout, 10, result);
     printf("\n");
 
     // 4 - Clear
-    mpz_clear(resultado);
+    mpz_clear(result);
 }
 
 void swap(unsigned int arr[], int i)
@@ -380,22 +380,26 @@ void help_display()
 }
 
 // EXTRA FUNCTIONALITIES =========================================================================================================
-unsigned int *array_half_create(unsigned int arr[], int sz)
+unsigned int* array_merge(unsigned int arr[], int sz)
 {
-    unsigned int *arr_half = (unsigned int *)calloc(sz, sizeof(unsigned int));
-
-    array_read(arr_half, sz);
-    array_half_write(arr, arr_half, sz);
-
-    return arr_half;
+    unsigned int *arr_2 = (unsigned int *)calloc(sz, sizeof(unsigned int));
+    array_read(arr_2, sz);
+    
+    unsigned int* arr_zip = array_zip(arr, arr_2, sz);
+    free(arr_2);
+    return arr_zip;
 }
 
-void array_half_write(unsigned int arr[], unsigned int arr_half[], int sz)
+unsigned int* array_zip(unsigned int arr_1[], unsigned int arr_2[], int sz)
 {
-    for (int i = 0; i < sz / 2; i++)
+    unsigned int *arr_zip = (unsigned int *)calloc(sz, sizeof(unsigned int));
+
+    for(int i = 0; i < sz; i++)
     {
-        arr_half[i] = arr[i];
+        arr_zip[i] = i % 2 == 0 ? arr_1[i] : arr_2[i];
     }
+
+    return arr_zip;
 }
 
 void array_lcm(unsigned int arr[], int sz)
