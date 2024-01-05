@@ -1,6 +1,6 @@
 /**
  * @file main_team_3.c
- * @author your name (you@domain.com)
+ * @author Alessandra Delgado (alessandra.delgado@ubi.pt)
  * @brief In this project, the program asks the user for 20 integers, of values ranging from 7 to 30,
  * which are then stored in an array. The provided integers are then used for either calculating statistics
  * or perform operations, at the user's request.
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 {
     if(argc >= 2)
     {
-        if( strcmp(argv[1], "--help") == 0)
+        if (strcmp(argv[1], "--help") == 0)
         {
             printf("Help\n");
             return 0;
@@ -43,7 +43,6 @@ int main(int argc, char* argv[])
     char option;
     unsigned int arr[] = {7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                           17, 18, 19, 20, 21, 30, 23, 24, 25, 26};
-    int ret = 1;
 
     printf("\n");
     array_display(arr, 20);
@@ -51,7 +50,8 @@ int main(int argc, char* argv[])
     printf("\n");
     press_r_to_continue();
 
-    while (1)
+
+    while(1)
     {
         // 1 - Display menu to user
 
@@ -65,20 +65,17 @@ int main(int argc, char* argv[])
 
         /*An empty space character is left on scanf's
          * reading as we don't want the program
-         * to pick on unwanted newlines!
+         * to pick on unwanted newlines
          */
         scanf(" %c", &option);
 
         // When the user chooses the quitting option, the function returns 0
-        ret = menu_option_assign(&page, option, arr);
-        printf("\n");
-        
-        //When the function returns 0, the program ceases.
-        if (ret == 0)
+        if(menu_option_assign(&page, option, arr) == 0)
         {
             printf("Adeus!\n");
             return 0;
         }
+        printf("\n"); 
 
         // sopimpa
         if (option != 'X' && option != 'x' && option != 'P' && option != 'p')
@@ -86,6 +83,6 @@ int main(int argc, char* argv[])
             press_r_to_continue();
         }
     }
-
+    
     return 0;
 }

@@ -8,3 +8,8 @@ In this project, the program asks the user for 20 integers, of values ranging fr
 1. Listing of the files implementing the software;
 2. Listing and description of each function of the program ;
 3. Indication of reference links.
+
+### TO-DO:
+1. make shuffle function
+2. documentation
+    2.3. Page info

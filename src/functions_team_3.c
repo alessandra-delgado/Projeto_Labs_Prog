@@ -14,7 +14,6 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
 
     if (opt == 'Q' || opt == 'q')
     {
-        printf("A terminar...");
         return 0;
     }
 
