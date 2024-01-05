@@ -17,6 +17,11 @@
 
 #include "functions_team_25.h"
 
+//Todo: Change help menu
+//Todo: Implement that one scrambling function properly
+//Todo: Better documentation
+//Todo: Change to read array function
+
 /**
  * @brief 
  * @param argc Argument count
@@ -29,7 +34,7 @@ int main(int argc, char* argv[])
     {
         if (strcmp(argv[1], "--help") == 0)
         {
-            printf("Help\n");
+            help_display();
             return 0;
         }
         else
@@ -40,7 +45,8 @@ int main(int argc, char* argv[])
     }
     
     int page = 1;
-    char option;
+   char option;
+
     unsigned int arr[] = {7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                           17, 18, 19, 20, 21, 30, 23, 24, 25, 26};
 
