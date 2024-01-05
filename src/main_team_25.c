@@ -10,17 +10,15 @@
  * @copyright Copyright (c) 2024
  * 
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "functions_team_25.h"
-
 //Todo: Change help menu
-//Todo: Implement that one scrambling function properly
-//Todo: Better documentation
 //Todo: Change to read array function
-//TODO?: add F(lip page) instead of X and P
+//TODO?: add F(lip page) instead of X and P?
 
 /**
  * @brief This is the main function. 

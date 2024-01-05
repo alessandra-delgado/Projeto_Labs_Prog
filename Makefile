@@ -36,4 +36,5 @@ docs: $(OBJS)
 	@doxygen
 
 clean:
-	$(RM) -r $(BUILD_DIR)
+	rm -r $(BUILD_DIR)
+	@echo Ficheiros removidos.
