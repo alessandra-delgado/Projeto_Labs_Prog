@@ -1,5 +1,5 @@
 /**
- * @file main_team_3.c
+ * @file main_team_25.c
  * @author Alessandra Delgado (alessandra.delgado@ubi.pt)
  * @brief In this project, the program asks the user for 20 integers, of values ranging from 7 to 30,
  * which are then stored in an array. The provided integers are then used for either calculating statistics
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "functions_team_3.h"
+#include "functions_team_25.h"
 
 /**
  * @brief 
