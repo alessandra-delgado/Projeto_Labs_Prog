@@ -73,7 +73,7 @@ void array_mul(unsigned int arr[], int sz);
  * @brief Swaps two consecutive elements of a given array.
  * 
  * @param arr Is a given array.
- * @param i is arr's given index.
+ * @param i Is arr's given index.
  */
 void swap(unsigned int arr[], int i);
 
@@ -179,7 +179,7 @@ int algo_lcm(int a, int b);
  * 
  * @param arr Is a given array.
  * @param arr_asc Is the second array to multiply arr with.
- * @param sz is size the of arr.
+ * @param sz Is size the of arr.
  * @return Returns a double pointer, of type unsigned int, for the resultant matrix.
  */
 unsigned int** array_matrix_prod(unsigned int arr[], unsigned int arr_asc[], int sz);
