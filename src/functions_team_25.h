@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2024
  * 
  */
-
 #ifndef _FUNCTIONS_TEAM_3_H_
 #define _FUNCTIONS_TEAM_3_H_
 
