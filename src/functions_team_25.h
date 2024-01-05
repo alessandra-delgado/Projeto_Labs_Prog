@@ -70,10 +70,10 @@ void matrix_display(unsigned int** matrix, int sz);
 void array_mul(unsigned int arr[], int sz);
 
 /**
- * @brief Swaps two consecutive elements of an array.
+ * @brief Swaps two consecutive elements of a given array.
  * 
  * @param arr Is a given array.
- * @param i is @param arr's given index.
+ * @param i is arr's given index.
  */
 void swap(unsigned int arr[], int i);
 
