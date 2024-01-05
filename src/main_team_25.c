@@ -21,6 +21,7 @@
 //Todo: Implement that one scrambling function properly
 //Todo: Better documentation
 //Todo: Change to read array function
+//TODO?: add F(lip page) instead of X and P
 
 /**
  * @brief 
