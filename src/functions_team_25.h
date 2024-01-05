@@ -1,6 +1,6 @@
 /**
  * @file functions_team_25.h
- * @author Alessandra Yuna Bettencourt Delgado (alessandra.delgado@ubi.pt)
+ * @author 51713 - Alessandra Yuna Bettencourt Delgado (alessandra.delgado@ubi.pt)
  * @brief 
  * @version 0.1
  * @date 2024-01-05
