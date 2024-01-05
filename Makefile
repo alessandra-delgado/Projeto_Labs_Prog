@@ -31,7 +31,7 @@ $(BUILD_DIR)/%.o : %.c
 	
 # =============================
 
-docs:
+docs: $(OBJS)
 	@echo Building Docs
 	@doxygen
 

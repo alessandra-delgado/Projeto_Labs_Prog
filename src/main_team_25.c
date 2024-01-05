@@ -4,10 +4,10 @@
  * @brief In this project, the program asks the user for 20 integers, of values ranging from 7 to 30,
  * which are then stored in an array. The provided integers are then used for either calculating statistics
  * or perform operations, at the user's request.
- * @version 0.1
- * @date 2023-12-02
+ * @version 1
+ * @date 2024-01-05
  * 
- * @copyright Copyright (c) 2023
+ * @copyright Copyright (c) 2024
  * 
  */
 
@@ -24,10 +24,10 @@
 //TODO?: add F(lip page) instead of X and P
 
 /**
- * @brief 
+ * @brief This is the main function. 
  * @param argc Argument count
- * @param argv Argument vector
- * @return int 
+ * @param argv Argument vector 
+ * @return Returns 0 on exit. 
  */
 int main(int argc, char* argv[])
 {

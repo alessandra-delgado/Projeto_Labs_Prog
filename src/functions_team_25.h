@@ -1,11 +1,11 @@
 /**
- * @file functions_team_3.h
- * @author your name (you@domain.com)
+ * @file functions_team_25.h
+ * @author Alessandra Yuna Bettencourt Delgado (alessandra.delgado@ubi.pt)
  * @brief 
  * @version 0.1
- * @date 2023-12-02
+ * @date 2024-01-05
  * 
- * @copyright Copyright (c) 2023
+ * @copyright Copyright (c) 2024
  * 
  */
 
@@ -14,9 +14,9 @@
 
 
 /**
- * @brief Depending on the page, displays either the menu or sub-menu
+ * @brief Depending on the page, displays either the menu or sub-menu.
  * 
- * @param page
+ * @param page Page
  */
 void menu_display(int page);
 
@@ -26,12 +26,12 @@ void menu_display(int page);
  * @param pg Page
  * @param opt Option
  * @param arr Array
- * @return Returns 0 when the user inputs 'Q' or 'q'
+ * @return Returns 0 when the value of opt is 'Q' or 'q'
  */
 int menu_option_assign(int *pg, char opt, unsigned int arr[]);
 
 /**
- * @brief Freezes the program until user inputs char R
+ * @brief Freezes the program until user inserts char 'R' or 'r'.
  * 
  */
 void press_r_to_continue();
@@ -39,8 +39,8 @@ void press_r_to_continue();
 /**
  * @brief Reads user input values to array
  * 
- * @param arr Array
- * @param sz Size of array arr
+ * @param arr is a given array.
+ * @param sz is the size of arr.
  */
 void array_read(unsigned int arr[], int sz);
 
@@ -50,7 +50,6 @@ void array_read(unsigned int arr[], int sz);
  * @param arr Array
  */
 void array_display(unsigned int arr[], int sz);
-
 
 /**
  * @brief Displays 20*20 matrix
@@ -63,61 +62,62 @@ void matrix_display(unsigned int** matrix, int sz);
 // FUNCTIONALITIES ==============================================================================================================
 
 /**
- * @brief Calculates the product of the array elements
+ * @brief Calculates the product of the array elements.
  * 
- * @param arr Array
- * @param sz Size of array arr
+ * @param arr is a given array.
+ * @param sz is the size of @param arr.
  */
 void array_mul(unsigned int arr[], int sz);
 
 /**
- * @brief Swaps two consecutive elemts of an array
+ * @brief Swaps two consecutive elements of an array.
  * 
- * @param arr Array
- * @param i base index
+ * @param arr is a given array.
+ * @param i is @param arr's given index.
  */
 void swap(unsigned int arr[], int i);
 
 /**
- * @brief Returns the array arr sorted
+ * @brief Based on given array, sorts it in ascending order onto a new array.
  * 
- * @param arr Array
- * @param sz Size of array arr
+ * @param arr is a given array.
+ * @param sz is the size of @param arr.
+ * @return Returns pointer of type unsingned int for the resultant array.
  */
 unsigned int* array_sort_asc(unsigned int arr[], int sz);
 
 /**
- * @brief Calculates the sin of the array arr elements
+ * @brief Calculates the sin of the array arr elements.
  * 
- * @param arr Array
- * @param sz Size of array arr
+ * @param arr is a given array.
+ * @param sz is the size of @param arr.
  */
 void array_sin(unsigned int arr[], int sz);
 
 
 /**
- * @brief Permutes a given array, moving every element to the left per line
+ * @brief Creates a matrix based on an array. Being the first row the array itself, and all the other rows are its permutations, using a ROL algorithm.
  * 
- * @param arr Array
- * @param sz Size of array arr
- * @return unsigned** Resultant matrix
+ * @param arr is a given array.
+ * @param sz is the size of @param arr.
+ * @return Returns double pointer of type unsigned int for the resultant matrix.
  */
 unsigned int** array_permute(unsigned int arr[], int sz);
 
 /**
- * @brief Displays elements bigger than 2 and divisible by 5 of array arr of size sz
+ * @brief Displays elements bigger than 2 and divisible by 5 of a given array.
  * 
- * @param arr Array
- * @param sz Size of array arr
+ * @param arr is a given array.
+ * @param sz is the size of @param arr.
  */
 void array_mod_5(unsigned int arr[], int sz);
 
 /**
- * @brief Calculates the mininum value of a given array arr of size sz
+ * @brief Calculates the mininum value of a given array arr of size sz.
  * 
- * @param arr Array 
- * @param sz Size of array arr
- * @return unsigned int the minimum element of the array arr
+ * @param arr is a given array.
+ * @param sz is the size of @param arr.
+ * @return Returns the minimum element, of type unsigned int, from @param arr.
  */
 unsigned int array_min(unsigned int arr[], int sz);
 
@@ -132,53 +132,61 @@ void help_display();
 /**
  * @brief Reads a new array, and merges it with a given array, attending a zip algorithm. 
  * 
- * @param arr Array
- * @param sz Size of array arr
- * @return unsigned int pointer for the new array, arr_2
+ * @param arr is a given array.
+ * @param sz is the size of @param arr.
+ * @return Returns a pointer, of type unsigned int, for the resultant array.
  */
 unsigned int* array_merge(unsigned int arr[], int sz);
-
-/*exemplo
- * This function returns the division of two floats passed as parameters.
- * @param x and @param y are floats, the dividend and the divisor, respectively.
- *
- * @return The value of x divided by y if y is different from 0. 
- * @return 0 if y is equal to 0.
- *
- * Notice that the function checks if y is different from 0 before
- * performing the division.
-*/
-
 
 /**
  * @brief Zip algorithm for two given arrays.
  * 
  * @param arr_1 and @param arr_2 are unsigned int* arrays.
- * @param sz is the size of the resulting array.
- * @return The pointer of type unsigned int* for the resulting array.
+ * @param sz is the size of the resultant array.
+ * @return The pointer, of type unsigned int, for the resultant array.
  */
 unsigned int* array_zip(unsigned int arr_1[], unsigned int arr_2[], int sz);
 
 /**
- * @brief Calculates least common multiple of every each two array's numbers in a row.
+ * @brief Calculates least common multiple of every each two elements in a row of a given array.
  * 
- * @param arr Array
- * @param sz Size of array arr
+ * @param arr is a given array.
+ * @param sz is the size of @param arr.
  */
 void array_lcm(unsigned int arr[], int sz);
 
+/**
+ * @brief Determines the greatest common divisor of two given numbers.
+ * 
+ * @param a and @param b are two given integers.
+ * @return Returns the greatest common divisor of @param a and @param b.
+ */
 int algo_gcd(int a, int b);
+
+/**
+ * @brief Determines the least common multiple of two given numbers.
+ * 
+ * @param a and @param b are two given integers.
+ * @return Returns the least common multiple of @param a and @param b.
+ */
 int algo_lcm(int a, int b);
 
 /**
- * @brief Calculates the matrix product of two different arrays.
+ * @brief Calculates the matrix product of two given arrays.
  * 
- * @param arr Array
- * @param arr_asc Second array to multiply for
- * @param sz Size of array arr
+ * @param arr is a given array.
+ * @param arr_asc is the second array to multiply @param arr with.
+ * @param sz is size the of @param arr.
+ * @return Returns a double pointer, of type unsigned int, for the resultant matrix.
  */
 unsigned int** array_matrix_prod(unsigned int arr[], unsigned int arr_asc[], int sz);
 
+/**
+ * @brief Displays a given matrix transposed.
+ * 
+ * @param matrix is a given squared matrix.
+ * @param sz is the size of rows/colums of @param matrix. 
+ */
 void matrix_transposed(unsigned int** matrix, int sz);
 
 
