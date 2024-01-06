@@ -5,9 +5,9 @@ EXE ?= execute.exe
 
 BUILD_DIR ?= ./build
 SRC_DIR ?= src
-DOCS = doxygen
 EXE_DIR ?= $(BUILD_DIR)/$(EXE)
 
+DOCS = doxygen
 MKDIR_F ?= -p
 LIBS = -lgmp -lm
 
@@ -31,9 +31,9 @@ $(BUILD_DIR)/%.o : %.c
 # =============================
 
 docs:
-	@echo A gerar ficheiros de documentação. ======================================
+	@echo A gerar ficheiros de documentação. ===================
 	@$(DOCS)
-	@echo Ficheiros de documentação gerados. ======================================
+	@echo Ficheiros de documentação gerados. ===================
 
 clean:
 	rm -r $(BUILD_DIR)
