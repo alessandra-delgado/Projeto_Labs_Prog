@@ -1,15 +1,15 @@
 .PHONY: all run docs clean
 
-CC = gcc
-EXE ?= execute.exe
+CC := gcc
+EXE := execute.exe
 
-BUILD_DIR ?= ./build
-SRC_DIR ?= src
-EXE_DIR ?= $(BUILD_DIR)/$(EXE)
+BUILD_DIR := ./build
+SRC_DIR := src
+EXE_DIR := $(BUILD_DIR)/$(EXE)
 
-DOCS = doxygen
-MKDIR_F ?= -p
-LIBS = -lgmp -lm
+DOCS := doxygen
+MKDIR_F := -p
+LIBS := -lgmp -lm
 
 SRCS := $(shell find $(SRC_DIR) -name *.c)
 OBJS := $(SRCS:%.c=$(BUILD_DIR)/%.o)
