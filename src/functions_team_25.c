@@ -200,7 +200,7 @@ void array_read(unsigned int arr[], int sz)
     {
         do
         {
-            printf("Insira o %dº elemento (entre 7 e 30): ", i);
+            printf("Insira o %dº elemento (entre 7 e 30): ", i+1);
             scanf("%d", &arr[i]);
 
         } while (arr[i] < 7 || arr[i] > 30); // Verifies if input is between no.s 7 and 30

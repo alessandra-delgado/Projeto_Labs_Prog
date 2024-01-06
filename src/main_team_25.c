@@ -17,7 +17,6 @@
 
 #include "functions_team_25.h"
 //Todo: Change help menu
-//Todo: Change to read array function
 //TODO?: add F(lip page) instead of X and P?
 
 /**
@@ -43,10 +42,10 @@ int main(int argc, char* argv[])
     }
     
     int page = 1;
-   char option;
+    char option;
+    int arr[20];
 
-    unsigned int arr[] = {7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-                          17, 18, 19, 20, 21, 30, 23, 24, 25, 26};
+    array_read(arr , 20);
 
     printf("\n");
     array_display(arr, 20);
