@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2024
  * 
  */
-#ifndef _FUNCTIONS_TEAM_3_H_
-#define _FUNCTIONS_TEAM_3_H_
+#ifndef _FUNCTIONS_TEAM_25_H_
+#define _FUNCTIONS_TEAM_25_H_
 
 
 /**
@@ -191,4 +191,4 @@ unsigned int** array_matrix_prod(unsigned int arr[], unsigned int arr_asc[], int
  */
 void matrix_transposed(unsigned int** matrix, int sz);
 
-#endif //_FUNCTIONS_TEAM_3_H_
+#endif //_FUNCTIONS_TEAM_25_H_
