@@ -8,7 +8,7 @@ SRC_DIR := src
 EXE_DIR := $(BUILD_DIR)/$(EXE)
 
 DOCS := doxygen
-MKDIR_F := -p
+MKDIR := mkdir -p
 LIBS := -lgmp -lm
 
 SRCS := $(shell find $(SRC_DIR) -name *.c)
@@ -25,7 +25,7 @@ $(EXE_DIR): $(OBJS)
 	$(CC) $^ -o $@ $(LIBS)
 
 $(BUILD_DIR)/%.o : %.c
-	mkdir $(MKDIR_F) $(dir $@)
+	$(MKDIR) $(dir $@)
 	$(CC) -c $< -o $@
 	
 # =============================
