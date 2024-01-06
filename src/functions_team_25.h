@@ -47,6 +47,7 @@ void array_read(unsigned int arr[], int sz);
  * @brief Displays an array
  * 
  * @param arr Is a given array.
+ * @param sz Is the size of arr
  */
 void array_display(unsigned int arr[], int sz);
 
