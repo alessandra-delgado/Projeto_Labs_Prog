@@ -33,7 +33,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[]);
  * @brief Freezes the program until user inserts char 'R' or 'r'.
  * 
  */
-void press_r_to_continue();
+void press_r_to_resume();
 
 /**
  * @brief Reads user input values to array

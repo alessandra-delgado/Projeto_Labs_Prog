@@ -7,6 +7,7 @@
 // ASSIGNING ====================================================================================================================
 int menu_option_assign(int *pg, char opt, unsigned int arr[])
 {
+    // 1 - Create NULL pointers
     unsigned int *arr_asc = NULL;
     unsigned int **matrix = NULL;
     unsigned int *arr_ord = NULL;
@@ -28,8 +29,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
             break;
 
         case '2':
-            printf("Vetor ordenado por ordem crescente:\n");
-            printf("Vetor reeordenado:\n");
+            printf("Vetor reeordenado por ordem crescente:\n");
 
             arr_ord = array_sort_asc(arr, 20);
             array_display(arr_ord, 20);
@@ -46,6 +46,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
             matrix = array_permute(arr, 20);
             matrix_display(matrix, 20);
 
+            // Freeing everything that was created dynamically
             for (int i = 0; i < 20; i++)
             {
                 free(matrix[i]);
@@ -83,17 +84,16 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
         switch (opt)
         {
         case '1':
-            printf("Leitura de um novo vetor:");
+            printf("Leitura de um novo vetor\n");
             arr_zip = array_merge(arr, 20);
             array_display(arr_zip, 20);
-            free(arr_zip);
 
+            free(arr_zip);
             break;
 
         case '2':
             printf("Cálculo do mínimo múltiplo comum de cada dois números seguidos do vetor.\n");
             array_lcm(arr, 20);
-
             break;
 
         case '3':
@@ -101,6 +101,8 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
             matrix = array_matrix_prod(arr, arr_asc, 20);
             printf("Matrix 20x20:\n");
             matrix_display(matrix, 20);
+
+            // Freeing everything that was created dynamically
             free(arr_asc);
             for (int i = 0; i < 20; i++)
             {
@@ -115,6 +117,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
             matrix = array_matrix_prod(arr, arr_asc, 20);
             matrix_transposed(matrix, 20);
 
+            // Freeing everything that was created dynamically
             free(arr_asc);
             for (int i = 0; i < 20; i++)
             {
@@ -136,7 +139,7 @@ int menu_option_assign(int *pg, char opt, unsigned int arr[])
     return 1;
 }
 
-void press_r_to_continue()
+void press_r_to_resume()
 {
     char opt = ' ';
 
@@ -261,18 +264,19 @@ void swap(unsigned int arr[], int i)
 
 unsigned int *array_sort_asc(unsigned int arr[], int sz)
 {
+    // 1 - Create array dynamically
     unsigned int *arr_asc = (unsigned int *)calloc(sz, sizeof(unsigned int));
 
-    // 1 - Copy from one array to another
+    // 2 - Copy from one array to another
     for (int i = 0; i < sz; i++)
     {
         arr_asc[i] = arr[i];
     }
 
-    // 2 - Create temporary variables
+    // 3 - Create temporary variables
     int count = 0;
 
-    // 3 - Swap values when needed
+    // 4 - Swap values when needed
     do
     {
         for (int i = 0; i < sz - 1; i++)
@@ -287,12 +291,13 @@ unsigned int *array_sort_asc(unsigned int arr[], int sz)
         count--;
     } while (count > 0);
 
+    // 5 - Return pointer
     return arr_asc;
 }
 
 unsigned int **array_permute(unsigned int arr[], int sz)
 {
-    // 1 - Create matrix
+    // 1 - Create sz*sz matrix dynamically
     unsigned int **matrix = (unsigned int **)calloc(sz, sizeof(unsigned int *));
 
     for (int i = 0; i < sz; i++)
@@ -311,7 +316,8 @@ unsigned int **array_permute(unsigned int arr[], int sz)
     {
         for (int j = 0; j < sz; j++)
         {
-            // Pushes every element to the left, in comparison to the preceding line.
+            // ROL:
+            // Pushes every element to the left, regarding the preceding line.
             // If it's the first element, pass it to the last cell
             matrix[i][j] = j == (sz - 1) ? matrix[i - 1][0] : matrix[i - 1][j + 1];
         }
@@ -322,6 +328,7 @@ unsigned int **array_permute(unsigned int arr[], int sz)
 
 void array_sin(unsigned int arr[], int sz)
 {
+    // 1 - Determines the sin of each element
     for (int i = 0; i < sz; i++)
     {
         printf("%.3f, ", sin(arr[i]));
@@ -332,14 +339,24 @@ void array_sin(unsigned int arr[], int sz)
 
 void array_mod_5(unsigned int arr[], int sz)
 {
+    int count = 0;
     printf("Pares (indice, elemento): ");
 
+    // 1 - Determines which elements are better than two and dividable by five
     for (int i = 0; i < sz; i++)
     {
         if (arr[i] > 2 && arr[i] % 5 == 0)
         {
+            // 2 - Print prefered elements
             printf("(%d, %d), ", i, arr[i]);
+            count +=1;
         }
+    }
+
+    // 3 - Print message if there are no prefered elements
+    if(count == 0)
+    {
+        printf("Não existem.");
     }
 
     printf("\n");
@@ -375,37 +392,48 @@ void help_display()
            "|  deve premir 'P', ou 'p').                                                       |\n"
            "|  Tanto no menu principal, como no sub-menu, o utilizador pode terminar o pro-    |\n"
            "|  grama ao premir 'Q', ou 'q'.                                                    |\n"
-           "|                                                                                  |\n"
+           "|  Deve inserir o número da funcionalidade que desejar e premir ENTER.             |\n"
            "[==================================================================================]\n");
 }
 
 // EXTRA FUNCTIONALITIES =========================================================================================================
 unsigned int* array_merge(unsigned int arr[], int sz)
 {
+    // 1 - Create second array dynamically
     unsigned int *arr_2 = (unsigned int *)calloc(sz, sizeof(unsigned int));
     array_read(arr_2, sz);
     
+    // 2 - Zip given arrays
     unsigned int* arr_zip = array_zip(arr, arr_2, sz);
+
+    // 3 - Free second array
     free(arr_2);
+
+    // 4 - Return resultant array's pointer
     return arr_zip;
 }
 
 unsigned int* array_zip(unsigned int arr_1[], unsigned int arr_2[], int sz)
 {
+    // 1 - Create array
     unsigned int *arr_zip = (unsigned int *)calloc(sz, sizeof(unsigned int));
 
+    // 2 - Zip algorithm
     for(int i = 0; i < sz; i++)
     {
         arr_zip[i] = i % 2 == 0 ? arr_1[i] : arr_2[i];
     }
 
+    // 3 - Return resultant array's pointer
     return arr_zip;
 }
 
 void array_lcm(unsigned int arr[], int sz)
 {
+    // Prerequisite: default value for least common multiple is 0
     int lcm = 0;
 
+    // 1 - For each two elements in the array, display their least common multiple
     for (int i = 0; i < sz - 1; i++)
     {
         printf("Mínimo múltiplo comum dos elementos %d e %d: %d\n", arr[i], arr[i + 1], algo_lcm(arr[i], arr[i + 1]));
@@ -414,8 +442,10 @@ void array_lcm(unsigned int arr[], int sz)
 
 int algo_gcd(int a, int b)
 {
+    //Could be a recursive function
     int tmp = b;
 
+    // 1 - Determines the greatest common divisor between two given integers, while b does not equal to zero
     while (b != 0)
     {
         tmp = b;
@@ -427,12 +457,13 @@ int algo_gcd(int a, int b)
 
 int algo_lcm(int a, int b)
 {
+    // 1 - Follows mathematical formula
     return (a * b) / algo_gcd(a, b);
 }
 
 unsigned int **array_matrix_prod(unsigned int arr[], unsigned int arr_asc[], int sz)
 {
-    // 1 - Create sz*sz matrix
+    // 1 - Create sz*sz matrix dynamically
     unsigned int **matrix = (unsigned int **)calloc(sz, sizeof(unsigned int *));
 
     for (int i = 0; i < sz; i++)
@@ -440,12 +471,12 @@ unsigned int **array_matrix_prod(unsigned int arr[], unsigned int arr_asc[], int
         matrix[i] = (unsigned int *)calloc(sz, sizeof(unsigned int));
     }
 
-    // 2 - Starts the process of writing on the matrix
+    // 2 - Writing on the matrix
     for (int i = 0; i < sz; i++)
     {
         for (int j = 0; j < sz; j++)
         {
-            // 3 - Calculates the element
+            // 3 - Determines each element
             matrix[i][j] = arr[i] * arr_asc[j];
         }
     }
@@ -455,6 +486,7 @@ unsigned int **array_matrix_prod(unsigned int arr[], unsigned int arr_asc[], int
 
 void matrix_transposed(unsigned int **matrix, int sz)
 {
+    // 1 - Create matrix dynamically
     unsigned int **matrix_t = (unsigned int **)calloc(sz, sizeof(unsigned int *));
 
     for (int i = 0; i < sz; i++)
@@ -462,6 +494,7 @@ void matrix_transposed(unsigned int **matrix, int sz)
         matrix_t[i] = (unsigned int *)calloc(sz, sizeof(unsigned int));
     }
 
+    // 2 - Change swap indexes for each element
     for (int i = 0; i < sz; i++)
     {
         for (int j = 0; j < sz; j++)
@@ -470,8 +503,10 @@ void matrix_transposed(unsigned int **matrix, int sz)
         }
     }
 
+    // 3 - Display transposed matrix
     matrix_display(matrix_t, sz);
 
+    // 4 - Freeing the matrix
     for (int i = 0; i < 20; i++)
     {
         free(matrix_t[i]);

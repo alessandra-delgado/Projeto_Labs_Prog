@@ -42,26 +42,26 @@ int main(int argc, char* argv[])
     int page = 1;
     char option;
     int arr[20];
-
-    array_read(arr , 20);
+    
+    array_read(arr, 20);
 
     printf("\n");
     array_display(arr, 20);
     
     printf("\n");
-    press_r_to_continue();
+    press_r_to_resume();
 
 
     while(1)
     {
-        // 1 - Display menu to user
+        // 1 - Display menu to user 
 
         // has the same effect as typing "clear" in terminal
         system("clear");
         menu_display(page);
         printf("\n");
 
-        // 2 - Get Input from user
+        // 2 - Get Input from user 
         printf("Insira uma opção: ");
 
         /*An empty space character is left on scanf's
@@ -73,15 +73,15 @@ int main(int argc, char* argv[])
         // When the user chooses the quitting option, the function returns 0
         if(menu_option_assign(&page, option, arr) == 0)
         {
-            printf("Adeus!\n");
+            printf("Adeus.\n");
             return 0;
         }
         printf("\n"); 
 
-        // sopimpa
+        // press_r_to_resume is triggered unless the user flips through pages
         if (option != 'X' && option != 'x' && option != 'P' && option != 'p')
         {
-            press_r_to_continue();
+            press_r_to_resume();
         }
     }
     
