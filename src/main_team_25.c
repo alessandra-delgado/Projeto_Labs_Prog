@@ -16,8 +16,6 @@
 #include <string.h>
 
 #include "functions_team_25.h"
-//Todo: Change help menu
-//TODO?: add F(lip page) instead of X and P?
 
 /**
  * @brief This is the main function. 
